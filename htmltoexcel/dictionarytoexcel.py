@@ -3,6 +3,14 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 
+from bs4 import BeautifulSoup
+
+def extract_entity_info1(html_content):
+    soup = BeautifulSoup(html_content, 'html.parser')
+    entity_name = soup.find('div', class_='pagetitle').text.strip().split('(')[0].strip()
+    description = soup.find('div', class_='desc').find('div', class_='refbox_inner').text.strip()
+    return entity_name, description
+
 def extract_entity_info(file_path):
     with open(file_path, 'r') as file:
         soup = BeautifulSoup(file, 'html.parser')
@@ -33,6 +41,9 @@ def generate_excel(folder_path, output_file):
         if file_name.endswith('.html'):
             file_path = os.path.join(folder_path, file_name)
             table_name, columns, column_descriptions = extract_entity_info(file_path)
+            entity_name, description = extract_entity_info(html_content)
+            print('Entity Name:', entity_name)
+            print('Description:', description)
 
             table_names.append(table_name)
             all_columns.append(columns)
