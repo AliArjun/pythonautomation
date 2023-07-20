@@ -2,6 +2,7 @@ import os
 import pandas as pd
 from bs4 import BeautifulSoup
 
+
 def extract_entity_info(file_path):
     with open(file_path, 'r') as file:
         soup = BeautifulSoup(file, 'html.parser')
@@ -22,6 +23,7 @@ def extract_entity_info(file_path):
 
         return table_name, columns, column_descriptions
 
+
 def generate_excel(folder_path, output_file):
     table_names = []
     all_columns = []
@@ -39,8 +41,10 @@ def generate_excel(folder_path, output_file):
     df = pd.DataFrame({'Table Name': table_names, 'Columns': all_columns, 'Description': all_descriptions})
     df.to_excel(output_file, index=False)
 
-# Provide the folder path containing the HTML files and the output Excel file path
-folder_path = 'path/to/html/files/folder'
-output_file = 'path/to/output/excel/file.xlsx'
 
-generate_excel(folder_path, output_file)
+if __name__ == '__main__':
+    # Provide the folder path containing the HTML files and the output Excel file path
+    folder_path = 'path/to/html/files/folder'
+    output_file = 'path/to/output/excel/file.xlsx'
+
+    generate_excel(folder_path, output_file)
