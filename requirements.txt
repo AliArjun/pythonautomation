@@ -1,0 +1,6 @@
+#dbt-core
+#pyyaml
+#dbt-mysql
+pandas
+jinja2
+openpyxl
