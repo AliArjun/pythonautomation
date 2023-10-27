@@ -39,3 +39,20 @@
     {% endfor %}
 {% endmacro %}
 
+-- upsert_abc_tables.sql
+
+{% macro upsert_abc_tables(database_name, schema_name) %}
+    {% set tables = adapter.execute(
+        "SELECT TABLE_NAME FROM {{ database_name }}.{{ schema_name }}.information_schema.tables WHERE TABLE_NAME LIKE 'ABC_T%'"
+    ) %}
+
+    {% for table in tables %}
+        -- Generate and execute the SQL to insert '-999999999' if it doesn't exist
+        {% set table_name = table.TABLE_NAME %}
+        {% set upsert_sql = "INSERT INTO " ~ database_name ~ "." ~ schema_name ~ "." ~ table_name ~ " (ID) " ~
+                            "SELECT '-999999999' WHERE NOT EXISTS (SELECT 1 FROM " ~ database_name ~ "." ~ schema_name ~ "." ~ table_name ~ " WHERE ID = '-999999999');" %}
+        
+        {{ adapter.execute(upsert_sql) }}
+    {% endfor %}
+{% endmacro %}
+
