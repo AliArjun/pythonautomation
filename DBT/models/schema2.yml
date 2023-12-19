@@ -1,0 +1,30 @@
+# models/schema.yml
+version: 2
+
+models:
+  - name: trgt_tbl
+    columns:
+      - name: ID
+        tests:
+          - unique
+      - name: SEQVAL
+        tests:
+          - unique
+      - name: REC_EFF_TS
+        tests:
+          - unique
+      - name: REC_EXPIR_TS
+        tests:
+          - unique
+      - name: BTCH_JOB_ID
+        tests:
+          - unique
+      - name: CURR_REC_IND
+        tests:
+          - accepted_values: ['Y', 'N']
+      - name: TBL1_COL
+        tests:
+          - unique
+      - name: TBL2_COL
+        tests:
+          - unique
