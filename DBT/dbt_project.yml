@@ -1,0 +1,6 @@
+# dbt_project.yml
+...
+models:
+  trgt_src_combined:
+    pre-hook: scripts/pre_hook_update.sql
+...
