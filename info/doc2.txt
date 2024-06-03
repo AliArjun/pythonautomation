@@ -1,0 +1,172 @@
+
+Here's the corrected and updated onboarding template document including details on different environments (dev, test, production), DevOps procedures, ServiceNow-based change control processes for production, and standard disaster recovery procedures:
+
+[Company Name] Onboarding Document for Data Engineers and Data Analysts
+
+Date: [Insert Date]
+
+Prepared by: [Your Name/Department]
+
+Table of Contents
+Introduction
+Company Overview
+Team Structure and Contacts
+Technologies and Tools
+AWS Cloud
+AWS Glue
+AWS Step Functions
+AWS Lambda
+AWS Data Lake
+DBT-based ELT Pipelines
+EKS (East and West Regions)
+Okta SSO
+Microsoft Azure Enterprise Sign-On
+SailPoint for AD Requests
+GitHub Enterprise
+Trufflehog and Snyk
+Jenkins
+Terraform Enterprise
+Snowflake Data Warehouse
+Development and Deployment Workflow
+Environments (Dev, Test, Production)
+DevOps Procedures (Jenkins, Terraform)
+Change Control Process (ServiceNow)
+Disaster Recovery Procedure
+Security and Compliance
+Resource Provisioning and Access
+Code Management and Version Control
+Data Management and Governance
+Best Practices
+Support and Resources
+1. Introduction
+Welcome to [Company Name]. This document serves as an onboarding guide for new Data Engineers and Data Analysts joining the Data & Analytics Line of Business (LOB) systems IT team. It covers essential information about our technologies, tools, processes, and best practices.
+
+2. Company Overview
+Provide a brief overview of the company, its mission, vision, and core values.
+
+3. Team Structure and Contacts
+List the key team members, their roles, and contact information. Include an organizational chart if possible.
+
+4. Technologies and Tools
+AWS Cloud
+Overview: Describe the usage of AWS cloud services in the enterprise.
+Key Services: EC2, S3, RDS, etc.
+AWS Glue
+Overview: Explain the purpose of AWS Glue in the ETL process.
+Usage: How it is used for data integration.
+AWS Step Functions
+Overview: Describe the workflow orchestration using Step Functions.
+Usage: Integration with other AWS services.
+AWS Lambda
+Overview: Explain the use of serverless functions.
+Usage: Event-driven processing in data pipelines.
+AWS Data Lake
+Overview: Describe the architecture of the data lake.
+Usage: Storing and managing large datasets.
+DBT-based ELT Pipelines
+Overview: Explain the DBT (Data Build Tool) and its role in the ELT process.
+Usage: Deployment on EKS clusters in both East and West regions.
+EKS (East and West Regions)
+Overview: Describe the Kubernetes clusters on AWS.
+Usage: Hosting DBT pipelines and other containerized applications.
+Okta SSO
+Overview: Single sign-on service for secure access.
+Usage: Integration with enterprise systems.
+Microsoft Azure Enterprise Sign-On
+Overview: Azure-based authentication.
+Usage: Standard enterprise sign-on process.
+SailPoint for AD Requests
+Overview: Identity management and access request system.
+Usage: Submitting AD requests and managing identities.
+GitHub Enterprise
+Overview: Source control and collaboration platform.
+Usage: Standard branching strategy and repository management.
+Trufflehog and Snyk
+Overview: Security scanning tools.
+Usage: Scanning code for vulnerabilities.
+Jenkins
+Overview: CI/CD tool for automation.
+Usage: Building Docker images for DBT ELT app code.
+Terraform Enterprise
+Overview: Infrastructure as Code (IaC) tool.
+Usage: Provisioning cloud resources in both East and West regions.
+Snowflake Data Warehouse
+Overview: Cloud-based data warehouse.
+Usage: Organizing data in base and semantic layers for BI and analytics.
+5. Development and Deployment Workflow
+Environments (Dev, Test, Production)
+Development (Dev):
+
+Used for active development and testing by individual developers.
+Code is deployed frequently, allowing for rapid iteration and testing.
+Testing (Test):
+
+Used for integration testing, where code from multiple developers is merged and tested.
+Mimics the production environment closely to ensure reliability.
+Production (Prod):
+
+Live environment where the final code is deployed for end-users.
+Highly controlled and monitored to ensure stability and performance.
+DevOps Procedures (Jenkins, Terraform)
+Jenkins:
+
+Usage: Continuous Integration and Continuous Deployment (CI/CD).
+Pipeline: Automates the building, testing, and deployment of applications.
+Docker: Builds Docker images for DBT ELT app code.
+Terraform Enterprise:
+
+Usage: Infrastructure as Code (IaC) for provisioning and managing cloud resources.
+Configuration: Defines infrastructure in code to ensure consistency across environments.
+Change Control Process (ServiceNow)
+ServiceNow:
+Usage: Managing change requests for production deployments.
+Process: Submit change requests, obtain approvals, and document changes.
+Compliance: Ensures all changes are tracked and compliant with governance policies.
+Disaster Recovery Procedure
+Disaster Recovery (DR):
+Plan: Detailed plan to recover and restore services in case of a major incident.
+Backup: Regular backups of critical data and systems.
+Testing: Regular DR drills to ensure readiness.
+Recovery Time Objective (RTO): Maximum acceptable downtime.
+Recovery Point Objective (RPO): Maximum acceptable data loss period.
+6. Security and Compliance
+Detail the security practices and compliance requirements, including:
+
+Access control
+Data protection measures
+Security scanning (Trufflehog, Snyk)
+7. Resource Provisioning and Access
+Explain the process for provisioning resources and accessing systems:
+
+Submitting requests via SailPoint
+Access to AWS, EKS, Snowflake, etc.
+8. Code Management and Version Control
+Provide guidelines for managing code and version control using GitHub:
+
+Branching strategy
+Code review process
+Pull requests
+9. Data Management and Governance
+Describe data management and governance policies:
+
+Data classification
+Data lineage
+Data quality management
+10. Best Practices
+List best practices for data engineering and analytics:
+
+Coding standards
+Documentation
+Collaboration and communication
+11. Support and Resources
+Provide information on where to get help and additional resources:
+
+Internal documentation
+Training materials
+Support contacts
+[Company Name]
+
+Data & Analytics LOB Systems IT Team
+
+[Insert Date]
+
