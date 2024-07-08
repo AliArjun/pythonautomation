@@ -1,0 +1,54 @@
+{
+  "Comment": "ETL Step Function workflow to retrieve all parameters under a specific path and pass to Lambda",
+  "StartAt": "RetrieveParametersByPath",
+  "States": {
+    "RetrieveParametersByPath": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::aws-sdk:ssm:getParametersByPath",
+      "Parameters": {
+        "Path": "/myetlparams/",
+        "Recursive": true,
+        "WithDecryption": true
+      },
+      "ResultPath": "$.Parameters",
+      "Next": "CheckParameters"
+    },
+    "CheckParameters": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.Parameters.Parameters",
+          "IsPresent": false,
+          "Next": "NoParametersFound"
+        },
+        {
+          "Variable": "$.Parameters.Parameters",
+          "IsPresent": true,
+          "Next": "FormatParameters"
+        }
+      ],
+      "Default": "NoParametersFound"
+    },
+    "NoParametersFound": {
+      "Type": "Fail",
+      "Error": "NoParametersFound",
+      "Cause": "No parameters were found under the specified path."
+    },
+    "FormatParameters": {
+      "Type": "Pass",
+      "Parameters": {
+        "ParametersMap.$": "$.Parameters.Parameters"
+      },
+      "ResultPath": "$.FormattedParameters",
+      "Next": "PassParametersToLambda"
+    },
+    "PassParametersToLambda": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:123456789012:function:MyETLLambdaFunction",
+      "Parameters": {
+        "Parameters.$": "$.FormattedParameters.ParametersMap"
+      },
+      "End": true
+    }
+  }
+}
